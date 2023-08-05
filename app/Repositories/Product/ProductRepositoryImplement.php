@@ -23,7 +23,7 @@ class ProductRepositoryImplement extends Eloquent implements ProductRepository{
 
     public function getAll(array $search,array $request){
        return $this->model
-       ->select('id','harga_pokok','harga_jual','stock','foto','satuan')
+       ->select('id','harga_pokok','harga_jual','stock','foto','satuan','nama_product','varian')
        ->where('status','aktif')
        ->search($search)
        ->paginate(8)
@@ -45,6 +45,15 @@ class ProductRepositoryImplement extends Eloquent implements ProductRepository{
         $model = $this->model->where('id', $id)->first();
         $this->deleteImage($model->foto);
         $this->model->where('id',$id)->delete();
+    }
+
+    public function getUnAktif(array $search,array $request){
+        return $this->model
+        ->select('id','harga_pokok','harga_jual','stock','foto','satuan','nama_product','varian')
+        ->where('status','tidak aktif')
+        ->search($search)
+        ->paginate(8)
+        ->appends($request);
     }
     // Write something awesome :)
 }

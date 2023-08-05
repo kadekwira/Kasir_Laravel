@@ -13,4 +13,5 @@ interface ProductService extends BaseService{
     public function update($id,$data);
     public function delete($id);
     public function handleImage($data,$type);
+    public function getUnAktif(array $search,array $request);
 }

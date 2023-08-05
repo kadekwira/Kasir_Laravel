@@ -12,4 +12,5 @@ interface ProductRepository extends Repository{
     public function store($data);
     public function update($id,$data);
     public function delete($id);
+    public function getUnAktif(array $search,array $request);
 }

@@ -4,13 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Http;
-use App\Http\Requests\ProductRequest;
 use App\Services\Product\ProductService;
 use RealRashid\SweetAlert\Facades\Alert;
 
-
-class ProductController extends Controller
+class UnaktifProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,11 +17,11 @@ class ProductController extends Controller
         $this->ProductService = $product;
     }
     public function index(Request $request)
-    { 
+    {
         $products = $this->ProductService
-        ->getAll(request(['search']),$request->all());
+        ->getUnAktif(request(['search']),$request->all());
         
-        return view('products.index',compact(['products']));
+        return view('Uproducts.index',compact(['products']));
     }
 
     /**
@@ -32,21 +29,15 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ProductRequest $request)
+    public function store(Request $request)
     {
-        try{
-            $this->ProductService->store($request->all());
-            Alert::success('Sukses', 'Data Berhasil Ditambahkan');
-        }catch(Exception $ex){
-            Alert::error('Gagal', 'Opps Something Wrong');
-        }
-        return redirect('/products');
+        //
     }
 
     /**
@@ -61,9 +52,9 @@ class ProductController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-    {   
+    {
         $product = $this->ProductService->getSingle($id);
-        return view('products.update',compact(['product']));
+        return view('Uproducts.update',compact(['product']));
     }
 
     /**
@@ -78,7 +69,7 @@ class ProductController extends Controller
         }catch(Exception $ex){
             Alert::error('Gagal', 'Opps Something Wrong');
         }
-        return redirect('/products');
+        return redirect('/unaktif-products');
     }
 
     /**
@@ -86,18 +77,6 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        try{
-            $this->ProductService->delete($id);
-            return response()->json([
-                'messages'=>"Product Berhasil di Hapus",
-                'status'=>'Success'
-            ]);
-        }catch(Exception $ex){
-            return response()->json([
-                'messages'=>"Opps Something Wrong",
-                'status'=>'Gagal'
-            ]);
-        }
-     
+        //
     }
 }

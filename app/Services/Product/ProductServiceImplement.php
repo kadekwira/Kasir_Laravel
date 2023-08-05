@@ -55,5 +55,9 @@ class ProductServiceImplement extends Service implements ProductService{
 
        $this->mainRepository->delete($id);
     }
+
+    public function getUnAktif(array $search,array $request){
+      return $this->mainRepository->getUnAktif($search,$request);
+    }
     // Define your custom methods :)
 }

@@ -84,9 +84,9 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/pegawai" class="nav-link">
+                                    <a href="/unaktif-products" class="nav-link">
                                         <i class="left fas fa-angle-right me-2 ms-4"></i>
-                                        <p>Data Pegawai</p>
+                                        <p>Products Tidak Aktif</p>
                                     </a>
                                 </li>
                             </ul>

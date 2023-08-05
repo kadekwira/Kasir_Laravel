@@ -14,7 +14,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Products</li>
+                            <li class="breadcrumb-item active">Products Tidak Aktif</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -29,9 +29,6 @@
                                 name="search">
                             <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>
-                    </div>
-                    <div class="col-lg-2 col-12">
-                        <a href="/products/create" class="btn btn-success float-end"><i class="fa-solid fa-plus"></i></a>
                     </div>
                 </div>
             </div>
@@ -55,7 +52,7 @@
                                     </p>
                                     <p class="card-text">Harga Jual : <span class="fw-semibold">@currency($data->harga_jual)</span></p>
                                     <d-flex class="gap-2">
-                                        <a href="/products/{{ $data->id }}/edit" class="btn btn-warning"><i
+                                        <a href="/unaktif-products/{{ $data->id }}/edit" class="btn btn-warning"><i
                                                 class="fa-solid fa-pen-to-square"></i></a>
                                     </d-flex>
                                 </div>
