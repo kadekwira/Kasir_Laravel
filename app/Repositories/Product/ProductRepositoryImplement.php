@@ -22,7 +22,12 @@ class ProductRepositoryImplement extends Eloquent implements ProductRepository{
     }
 
     public function getAll(array $search,array $request){
-       return $this->model->search($search)->paginate(8)->appends($request);
+       return $this->model
+       ->select('id','harga_pokok','harga_jual','stock','foto','satuan')
+       ->where('status','aktif')
+       ->search($search)
+       ->paginate(8)
+       ->appends($request);
     }
     public function getSingle($id){
         return $this->model->where('id', $id)->first();

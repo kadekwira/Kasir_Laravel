@@ -18,6 +18,7 @@ return new class extends Migration
             $table->bigInteger('harga_jual');
             $table->string('varian');
             $table->integer('stock');
+            $table->enum('satuan',['pcs','rtg','dos']);
             $table->string('foto');
             $table->enum('status',['aktif','tidak aktif']);
             $table->timestamps();

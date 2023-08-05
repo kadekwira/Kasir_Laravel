@@ -46,17 +46,13 @@
                                 height="200px">
                             <div class="card-body">
                                 <h5 class="card-title fw-semibold mb-2">{{ $data->nama_product }} - {{ $data->varian }}</h5>
-                                <p class="card-text mb-0">Stock : <span class="fw-semibold">{{ $data->stock }}</span></p>
+                                <p class="card-text mb-0">Stock : <span class="fw-semibold">{{ $data->stock }} - {{$data->satuan}}</span></p>
                                 <p class="card-text mb-0">Harga Pokok : <span class="fw-semibold">@currency($data->harga_pokok)</span>
                                 </p>
                                 <p class="card-text">Harga Jual : <span class="fw-semibold">@currency($data->harga_jual)</span></p>
                                 <d-flex class="gap-2">
                                     <a href="/products/{{ $data->id }}/edit" class="btn btn-warning"><i
                                             class="fa-solid fa-pen-to-square"></i></a>
-
-                                    <button class="btn btn-danger" onclick="deleteData({{ $data->id }})"
-                                        data-route="{{ route('products.destroy', $data->id) }}"
-                                        id="btn-delete">Delete</button>
 
                                 </d-flex>
                             </div>
@@ -71,51 +67,3 @@
     </div>
 @endsection
 
-@section('swal')
-    <script>
-        function deleteData(id) {
-            const route = $('#btn-delete').data('route');
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-                    $.ajax({
-                        type: 'POST',
-                        url: route,
-                        data: {
-                            _token: CSRF_TOKEN,
-                            _method: 'DELETE',
-                            id: id
-                        },
-                        dataType: 'JSON',
-                        success: function(response) {
-                            if (response.status == "Success") {
-                                Swal.fire(
-                                    'Deleted!',
-                                    response.messages,
-                                    'success'
-                                )
-                                window.location.reload();
-                            } else {
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Oops...',
-                                    text: response.messages,
-                                })
-                                window.location.reload();
-                            }
-                        }
-                    })
-
-                }
-            })
-        }
-    </script>
-@endsection

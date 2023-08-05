@@ -61,6 +61,24 @@
                   <input type="text" class="form-control" id="stock" name="stock" value="{{$product->stock}}">
                 </div>
                 <div class="col-md-6">
+                  <label for="satuan" class="form-label">Satuan</label>
+                  <select id="satuan" class="form-select" name="satuan">
+                    @if($product->satuan == 'pcs')
+                    <option value="pcs" selected>pcs</option>
+                    <option value="rtg">rtg</option>
+                    <option value="dos">dos</option>
+                    @elseif($product->satuan=='rtg')
+                    <option value="pcs" >pcs</option>
+                    <option value="rtg" selected>rtg</option>
+                    <option value="dos">dos</option>
+                    @else
+                    <option value="pcs" >pcs</option>
+                    <option value="rtg" >rtg</option>
+                    <option value="dos" selected>dos</option>
+                    @endif
+                  </select>
+                </div>
+                <div class="col-md-12">
                   <label for="status" class="form-label">status</label>
                   <select id="status" class="form-select" name="status">
                     @if($product->status == 'aktif')
@@ -72,6 +90,7 @@
                     @endif
                   </select>
                 </div>
+
                 <div class="col-12">
                   <label for="foto" class="form-label">foto</label>
                   <input class="form-control" type="file" id="foto" name="foto">
