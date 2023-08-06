@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>Sistem Pegawai</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -87,6 +88,12 @@
                                     <a href="/unaktif-products" class="nav-link">
                                         <i class="left fas fa-angle-right me-2 ms-4"></i>
                                         <p>Products Tidak Aktif</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/user" class="nav-link">
+                                        <i class="left fas fa-angle-right me-2 ms-4"></i>
+                                        <p>User</p>
                                     </a>
                                 </li>
                             </ul>

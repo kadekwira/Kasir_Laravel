@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UnaktifProductController;
 
@@ -21,3 +22,4 @@ Route::get('/', function () {
 
 Route::resource('products',ProductController::class);
 Route::resource('unaktif-products',UnaktifProductController::class);
+Route::resource('user',UserController::class);
